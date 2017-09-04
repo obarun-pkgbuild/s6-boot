@@ -3,12 +3,12 @@ post_install() {
 		useradd -u 19 -g 19 -d / -G log -c "S6 log user" -s /usr/bin/nologin s6log
 	fi
 	
-	chown s6log:log /etc/s6/boot-serv/uncaught-logs
+	chown s6log:log /etc/s6/classic/uncaught-logs
 	
 	# This is needed at the boot time, if the fifo file doesn't exist
 	# init system crash.
-	if ! [ -p /etc/s6/boot-serv/service/s6-svscan-log/fifo ]; then
-		mkfifo /etc/s6/boot-serv/service/s6-svscan-log/fifo
+	if ! [ -p /etc/s6/classic/service/s6-svscan-log/fifo ]; then
+		mkfifo /etc/s6/classic/service/s6-svscan-log/fifo
 	fi
 	
 	#create directories for log
