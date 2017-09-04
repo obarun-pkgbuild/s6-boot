@@ -17,7 +17,7 @@ backup=('usr/bin/init' 'etc/s6/stage2' 'etc/s6/stage3' 'etc/s6/stage2.tini'
 		'etc/s6-serv/enabled/rc/compiled/current' 'etc/s6-serv/enabled/rc/compiled/previous'
 		'etc/s6-serv/enabled/rc/compiled/Default.src')
 source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit")
-_commit=ef93123fc6338be5123d54175485fd30612bea2a # tag 0.1.5
+_commit=776956629caf8eb608c85242a49aa6bf3bb4a278  # tag 0.1.5
 sha256sums=('SKIP')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 install=s6-boot.install
@@ -77,17 +77,16 @@ package() {
 		unset i
   done
   
-  for i in DESTBOOTSERV DESTRCSERV PATH S6CONF SRCBOOTSERV SRCRCCOMPILED SRCRCSERV TERM; do
-		install -Dm 0644 "base-env/${i}" "$pkgdir/etc/s6/base-env/${i}"
+  for i in DEST DESTRC DESTUSER PATH S6CONF SRC SRCRC TEMPLATE TERM; do
+		install -Dm 0644 "env/${i}" "$pkgdir/etc/s6/env/${i}"
   done
-  #ln -sf /run/s6-conf "$pkgdir/etc/s6/env/s6-conf"
-  
+   
   # make data/scripts directory
   install -Dm 0755 "data/scripts/s6.local" "$pkgdir/etc/s6/data/scripts/s6.local"
   ln -s /etc/s6/data/scripts/s6.local "$pkgdir/etc/s6.local"
   
   # install service directory for boot
-  for i in boot-rc-serv/*; do
+  for i in rc/*; do
 		install -dm 0755 "$pkgdir/etc/s6/$i"
 		for j in $i/*; do
 			install -Dm 0644 $j "$pkgdir/etc/s6/$i"
@@ -97,10 +96,10 @@ package() {
   done
   
   # install service directory for init file
-  install -dm 0755 "$pkgdir/etc/s6/boot-serv/service"
-  install -dm 0755 "$pkgdir/etc/s6/boot-serv/uncaught-logs"
+  install -dm 0755 "$pkgdir/etc/s6/classic/service"
+  install -dm 0755 "$pkgdir/etc/s6/classic/uncaught-logs"
   
-  for i in boot-serv/service/*; do
+  for i in classic/service/*; do
 		install -dm 0755 "$pkgdir/etc/s6/$i"
 		for j in $i/*;do
 			install -Dm 0755 $j "$pkgdir/etc/s6/$i"
@@ -109,8 +108,8 @@ package() {
 		unset i
   done
   
-  install -dm 0755 "$pkgdir/etc/s6/boot-serv/service/.s6-svscan"
-  for i in boot-serv/service/.s6-svscan/*; do
+  install -dm 0755 "$pkgdir/etc/s6/classic/service/.s6-svscan"
+  for i in classic/service/.s6-svscan/*; do
 		install -Dm 0755 $i "$pkgdir/etc/s6/$i"
   done
   
