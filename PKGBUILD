@@ -16,8 +16,8 @@ backup=('usr/bin/init' 'etc/s6/stage2' 'etc/s6/stage3' 'etc/s6/stage2.tini'
 		'etc/s6/compiled/current' 'etc/s6/compiled/previous'
 		'etc/s6-serv/enabled/rc/compiled/current' 'etc/s6-serv/enabled/rc/compiled/previous'
 		'etc/s6-serv/enabled/rc/compiled/Default.src')
-source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit")
-_commit=776956629caf8eb608c85242a49aa6bf3bb4a278  # tag 0.1.5
+source=("$pkgname::git+https://github.com/Obarun/${pkgname}#branch=dev")
+#_commit=776956629caf8eb608c85242a49aa6bf3bb4a278  # tag 0.1.5
 sha256sums=('SKIP')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 install=s6-boot.install
