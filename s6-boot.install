@@ -10,18 +10,7 @@ post_install() {
 	if ! [ -p /etc/s6/classic/service/s6-svscan-log/fifo ]; then
 		mkfifo /etc/s6/classic/service/s6-svscan-log/fifo
 	fi
-	
-	#create directories for log
-	if ! [ -d /var/log/s6serv ]; then
-		mkdir -p -m 0755 /var/log/s6serv
-	fi
-	if ! [ -d /var/log/s6rc ]; then
-		mkdir -p -m 0755 /var/log/s6rc
-	fi
-	
-	chown s6log:log /var/log/s6rc
-	chown s6log:log /var/log/s6serv
-	
+		
 }
 post_upgrade() {
 	 post_install
