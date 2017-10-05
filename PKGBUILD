@@ -16,7 +16,7 @@ source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit"
 		'sysusers')
 _commit=5153867c5c87aca34f5f15771a11ffd52f70d018  # tag 0.1.7
 sha256sums=('SKIP'
-            'f03e00c3679f6c76d86c72188c8774170a3c34600147f0a3b02dd86385fa28ee')
+            'a9f226bfe8e80428eca71c4ef8b369467e20ad716fcf12f0779f7ddd6bc4a473')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 install=s6-boot.install
 
