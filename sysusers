@@ -1,2 +1,1 @@
-g log 19 -
-m s6log 19
+g log 19 - -
