@@ -1,7 +1,7 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=s6-boot
-pkgver=0.1.7
+pkgver=0.1.8+4+g95e0747
 pkgrel=1
 pkgdesc="Necessary files to boot under S6 supervision suite"
 arch=(x86_64)
