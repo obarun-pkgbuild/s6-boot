@@ -12,11 +12,18 @@ groups=(s6-suite)
 install=s6-boot.install
 backup=('etc/s6/s6.conf' 'etc/s6/data/scripts/s6.local'
 		'etc/s6/compiled/current' 'etc/s6/compiled/previous')
-source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit")
-_commit=5153867c5c87aca34f5f15771a11ffd52f70d018  # tag 0.1.7
+#source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit")
+source=("$pkgname::git+https://github.com/Obarun/${pkgname}#branch=dev")
+#_commit=5153867c5c87aca34f5f15771a11ffd52f70d018  # tag 0.1.7
 sha256sums=('SKIP')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 install=s6-boot.install
+
+pkgver() {
+	cd "${pkgname}"
+	
+	git describe --tags | sed -e 's:-:+:g;s:^v::'
+}
 
 package() {
   cd "${pkgname}"
