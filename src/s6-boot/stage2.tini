@@ -1,0 +1,38 @@
+#!/usr/local/bin/execlineb -S0
+# Copyright (c) 2015-2017 Eric Vidal <eric@obarun.org>
+# All rights reserved.
+# 
+# This file is part of Obarun. It is subject to the license terms in
+# the LICENSE file found in the top-level directory of this
+# distribution and at https://github.com/Obarun/s6-boot/LICENSE
+# This file may not be copied, modified, propagated, or distributed
+# except according to the terms contained in the LICENSE file.
+
+s6-envdir -if /etc/s6/env
+importas -i DESTRC DESTRC
+importas -i S6CONF S6CONF
+
+if { s6-echo -- "***************************************************************************" }
+if { s6-echo -- "**                        Start Tini shutdown                            **" }
+if { s6-echo -- "***************************************************************************" }
+cd /
+foreground { s6-rc -v 3 -l ${DESTRC} -da change }
+
+s6-envdir -if ${S6CONF}
+
+foreground {
+	importas -u TMPDIR TMPDIR
+	if { s6-test $TMPDIR = yes }
+	if { s6-echo -- Cleaning /tmp directory }
+	rm -rf /tmp/ 
+}
+foreground { 
+	if -X { mountstats }
+	if { s6-echo Umount NFS filesystem }
+	umount -a -f -t nfs4 
+}
+
+if { s6-echo -- "***************************************************************************" }
+if { s6-echo -- "**                        Tini shutdown terminated                       **" }
+if { s6-echo -- "**                            Enter on stage 3                           **" }
+s6-echo -- "***************************************************************************"
