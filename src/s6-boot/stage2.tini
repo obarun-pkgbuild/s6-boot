@@ -27,9 +27,9 @@ foreground {
 	rm -rf /tmp/ 
 }
 foreground { 
-	if -X { mountstats }
 	if { s6-echo Umount NFS filesystem }
 	umount -a -f -t nfs4 
+	umount -a -f -t nfs
 }
 
 if { s6-echo -- "***************************************************************************" }
