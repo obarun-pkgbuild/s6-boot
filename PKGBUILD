@@ -2,7 +2,7 @@
 
 pkgname=s6-boot
 pkgver=0.1.8+4+g95e0747
-pkgrel=1
+pkgrel=2
 pkgdesc="Necessary files to boot under S6 supervision suite"
 arch=(x86_64)
 url="http://obarun.org/"
