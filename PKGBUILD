@@ -1,7 +1,7 @@
 # Maintainer: Eric Vidal <eric@obarun.org>
 
 pkgname=s6-boot
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Necessary files to boot under S6 supervision suite"
 arch=(x86_64)
@@ -30,4 +30,3 @@ package() {
 
 }
 
-# vim:ft=sh ts=2 sw=2 et:
