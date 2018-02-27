@@ -2,7 +2,7 @@
 
 pkgname=s6-boot
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Necessary files to boot under S6 supervision suite"
 arch=(x86_64)
 url="http://obarun.org/"
@@ -14,7 +14,7 @@ backup=('etc/s6/s6.conf' 'etc/s6/data/scripts/s6.local'
 		'etc/s6/compiled/current' 'etc/s6/compiled/previous')
 source=("$pkgname::git+https://github.com/Obarun/${pkgname}#commit=$_commit"
 		'sysusers')
-_commit=7bacf4802bfbb3af7ef06088102a282a7343c570  # tag 0.2.1 fix warning message on crash
+_commit=a9e36c549b8ba973f1631f15f59eea0bcce72d0c  # tag 0.2.1 database compilation with s6-rc 0.4.0.0
 #source=("$pkgname::git+https://github.com/Obarun/${pkgname}#tag=v${pkgver}"
 #		'sysusers')
 sha256sums=('SKIP'
